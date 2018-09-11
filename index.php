@@ -132,15 +132,39 @@
 		<h1 style="    color: navy;font-style: italic;text-align: center;">Write a Post</h1>
 		<textarea name="message" placeholder="Write Post Here" style="height: 192px;
     margin-left: 132px;
-    width: 1003px;"></textarea>
+    width: 1003px;" name = "message"></textarea>
                         
-                            <input type="submit" value="posts" style="color: cyan;
+                            <input type="submit" value="post" style="color: cyan;
     background-color: darkblue;
     margin-top: 32px;
     margin-left: 42%;" />
+    
+  
 	</div>
 
 </section>
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- comment section start -->
 

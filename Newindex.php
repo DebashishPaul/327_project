@@ -2,6 +2,30 @@
 <html lang="en">
 
 <head>
+<style>
+    table {
+    
+     border: 1px solid black;
+    width: 100%;
+}
+
+td{
+    border: 3px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+     border-bottom: 1px solid #ddd;
+    
+}
+
+th{
+    height: 50px;
+    border: 10px solid #dddddd;
+    text-align: left;
+    padding: 5px;
+     border-bottom: 1px solid #ddd;
+    }
+    </style>
+
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,7 +44,8 @@
 </head>
 
 <body class="ab">
-<form action="indexBackend.php" method="post">
+
+//<form action="indexBackend.php" method="post">
     <!-- header part start -->
     <div class="header">
         <div class="row">
@@ -127,10 +152,10 @@
 <!-- comment section start -->
 
 <section class="comment">
-	<div class="row" style="  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);   /*background-color: cadetblue*/;height: 376px;    margin-left: 40px;
+    <div class="row" style="  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);   /*background-color: cadetblue*/;height: 376px;    margin-left: 40px;
     margin-right: 40px;">
-		<h1 style="    color: navy;font-style: italic;text-align: center;">Write a Post</h1>
-		<textarea name="message" placeholder="Write Post Here" style="height: 192px;
+        <h1 style="    color: navy;font-style: italic;text-align: center;">Write a Post</h1>
+        <textarea name="message" placeholder="Write Post Here" style="height: 192px;
     margin-left: 132px;
     width: 1003px;"></textarea>
                         
@@ -138,10 +163,48 @@
     background-color: darkblue;
     margin-top: 32px;
     margin-left: 42%;" />
-	</div>
 
+
+  
+    </div>
 </section>
+<?php
+ <table>
+ <tr>
+    <th>Serial Number</th>
+$connection = mysqli_connect('localhost', 'root', '', 'loco');
+  
 
+
+
+while ($row = mysqli_fetch_array($query))
+        {
+            //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+           
+            echo '<tr>
+                    
+                    <td>'.$row['Post_content'].'</td>
+                    
+                </tr>';
+            
+        }
+</table>
+        ?>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+$connection->close();
+?>
 <!-- comment section start -->
 
 
@@ -319,6 +382,9 @@
 
     </section>
     <!---->
+    
+
+  
 </body>
 
 </html>
