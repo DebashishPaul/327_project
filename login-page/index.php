@@ -17,37 +17,54 @@
 <head>
     <title>Welcome Loco</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        .lion {
+            background-color: aliceblue;
+            height: 5000px;
+        }
+
+    </style>
 </head>
 
 <body>
+    <!--
+    <div class="logo">
 
-    <div class="header">
-        <h2>Welcome LOCO</h2>
+        <a href="index.html"><img src="loco_icon.png" alt="Smiley face" height="82" width="82"></a>
     </div>
-    <div class="content">
-        <!-- notification message -->
-        <?php if (isset($_SESSION['success'])) : ?>
-        <div class="error success">
-            <h3>
-                <?php 
+-->
+    <div class="lion">
+        <div class="header">
+            <h2>Welcome LOCO</h2>
+        </div>
+        <div class="content">
+            <!-- notification message -->
+            <?php if (isset($_SESSION['success'])) : ?>
+            <div class="error success">
+                <h3>
+                    <?php 
             echo $_SESSION['success']; 
             unset($_SESSION['success']);
           ?>
-            </h3>
+                </h3>
+            </div>
+            <?php endif ?>
+
+            <!-- logged in user information -->
+            <?php  if (isset($_SESSION['username'])) : ?>
+            <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+            <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+            <?php endif ?>
+
         </div>
-        <?php endif ?>
 
-        <!-- logged in user information -->
-        <?php  if (isset($_SESSION['username'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-        <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-        <?php endif ?>
 
+        <h2 style="margin left:400px;">Alls Posts</h2>
     </div>
-
-
-    <h2 style="margin left:400px;">All Posts</h2>
-
 </body>
 
 </html>
