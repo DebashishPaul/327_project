@@ -1,3 +1,17 @@
+<?php include "indexBackend.php" ?>
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+    $_SESSION['msg'] = "You must log in first";
+  }
+  if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header("location: index.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +21,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="css/327project.css">
+    <link rel="stylesheet" type="text/css" href="./css/posts.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <!-- Start WOWSlider.com HEAD section -->
@@ -14,13 +29,41 @@
     <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="engine0/style.css" />
     <script type="text/javascript" src="engine0/jquery.js"></script>
+    <script src = "./js/jquery-3.3.1.min.js"></script>
     <!-- End WOWSlider.com HEAD section -->
 
 
 </head>
 
+<!-- JQuery Script to automatically refresh the page -->
+<script>
+    $(document).ready(function () {
+        $("#existing-posts").load("./utils/getdata.php", {
+
+        });
+    });
+</script>
+
 <body class="ab">
-<form action="indexBackend.php" method="post">
+
+	<?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+        <h3>
+          <?php 
+            echo $_SESSION['success']; 
+            unset($_SESSION['success']);
+          ?>
+        </h3>
+      </div>
+    <?php endif ?>
+
+    <!-- logged in user information -->
+    <?php  if (isset($_SESSION['username'])) : ?>
+      <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+      <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    <?php endif ?>
+    
+<form action="" method="post">
     <!-- header part start -->
     <div class="header">
         <div class="row">
@@ -50,7 +93,7 @@
                                 <li><a href="#">Specialist</a></li>
                                 <li><a href="javascript.html">Treatment</a></li>
 
-                                
+
                                 <form class="navbar-form navbar-left">
                                     <button type="submit" class="btn btn-warning">log in</button>
                                 </form>
@@ -112,7 +155,7 @@
     <button type="submit" class="btn btn-warning" style="color:white;margin-top: -13px;font-size: 22px;
     padding-top: 9px;padding-top: 9px;">log in</button>
 -->
-    <a href="login-page/index.php" style="
+    <a href="login.php" style="
     background-color: azure;
     font-size: 33px;
     font-family: monospace;
@@ -130,130 +173,95 @@
 	<div class="row" style="  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);   /*background-color: cadetblue*/;height: 376px;    margin-left: 40px;
     margin-right: 40px;">
 		<h1 style="    color: navy;font-style: italic;text-align: center;">Write a Post</h1>
-		<textarea name="message" placeholder="Write Post Here" style="height: 192px;
-    margin-left: 132px;
-    width: 1003px;" name = "message"></textarea>
-                        
-                            <input type="submit" value="post" style="color: cyan;
-    background-color: darkblue;
-    margin-top: 32px;
-    margin-left: 42%;" />
-    
-  
+		<textarea name="message" placeholder="Write Post Here" 
+        style="height: 192px;
+               margin-left: 132px;
+               width: 1003px;"></textarea>
+
+    <input type="submit" value="posts" style="color: cyan;
+        background-color: darkblue;
+        margin-top: 32px;
+        margin-left: 42%;" />
 	</div>
+
+    <!-- shows existing posts from database on page load or upon submission of new post -->
+    <div id="existing-posts">
+        
+    </div>
 
 </section>
 
-
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- comment section start -->
-
-
-
-
-
     <!--    catagory section end-->
     <!--    background image section start-->
     <h1 style="font-size: 49px;
     color: white;
     text-align: center;">Team Member</h1>
     <div class="container-fluid jhoom">
-        <div class="row">
-
-        </div>
-    </div>
-    <!--    background image section end-->
-    <!--team member start-->
-    <div class="row idoits">
-        <!--       1st picture-->
-        <div class="col-xm-6 col-sm-6 col-md-3 colum1">
-            <div class="images1">
-                <img src="team/sakib.png">
+        <!--    background image section end-->
+        <!--team member start-->
+        <div class="row idoits">
+        
+            <!--       1st picture-->
+            <div class="col-xm-6 col-sm-6 col-md-3 colum1">
+                <div class="images1">
+                    <img src="team/sakib.png">
+                </div>
+                <div class="some1">
+                    <h3 style="background-color: black;
+                        width: 220px;
+                        text-align: center;
+                        border-radius: 5px;
+                        border-style: dashed;">sakib Ahmed</h3>
+                </div>
             </div>
-            <div class="some1">
-                <h3 style="background-color: black;
-    width: 220px;
-    text-align: center;
-    border-radius: 5px;
-    border-style: dashed;">sakib Ahmed</h3>
-                
+           
+            <!--          --2nd picture------->
+            <div class="col-xm-6 col-sm-6 col-md-3 colum1">
+                <div class="images1">
+                    <img src="team/raha.png">
+                </div>
+                <div class="some1">
+                    <h3 style="background-color: black;
+                        width: 260px;
+                        text-align: center;
+                        border-radius: 5px;
+                        border-style: dashed;">Mayamin Hamid Raha</h3>
+                </div>
             </div>
-
-        </div>
-        <!--          --2nd picture------->
-
-        <div class="col-xm-6 col-sm-6 col-md-3 colum1">
-            <div class="images1">
-                <img src="team/raha.png">
-            </div>
-            <div class="some1">
-                <h3 style="background-color: black;
-    width: 260px;
-    text-align: center;
-    border-radius: 5px;
-    border-style: dashed;">Mayamin Hamid Raha</h3>
-                
-            </div>
-
-        </div>
-        <!--        -----------3rd picture------------>
-        <div class="col-xm-6 col-sm-6 col-md-3 colum1">
-            <div class="images1">
-                <img src="team/debashish.png">
-            </div>
-            <div class="some1">
-                <h3 style="background-color: black;
-    width: 220px;
-    text-align: center;
-    border-radius: 5px;
-    border-style: dashed;">Debashish Paul</h3>
-               
+            
+            <!--        -----------3rd picture------------>
+            <div class="col-xm-6 col-sm-6 col-md-3 colum1">
+                <div class="images1">
+                    <img src="team/debashish.png">
+                </div>
+                <div class="some1">
+                    <h3 style="background-color: black;
+                        width: 220px;
+                        text-align: center;
+                        border-radius: 5px;
+                        border-style: dashed;">Debashish Paul</h3>
+                </div>
             </div>
 
-        </div>
-        <div class="col-xm-6 col-sm-6 col-md-3 colum1">
-            <div class="images1">
-                <img src="team/sadman.png">
+            <div class="col-xm-6 col-sm-6 col-md-3 colum1">
+                <div class="images1">
+                    <img src="team/sadman.png">
+                </div>
+                <div class="some1">
+                    <h3 style="background-color: black;
+                        width: 220px;
+                        text-align: center;
+                        border-radius: 5px;
+                        border-style: dashed;">Shadman S. Khan</h3>
+                </div>
             </div>
-            <div class="some1">
-                <h3 style="background-color: black;
-    width: 220px;
-    text-align: center;
-    border-radius: 5px;
-    border-style: dashed;">Shadman S. Khan</h3>
-                
-            </div>
-
         </div>
     </div>
     <!--team member end-->
 
 
     <!--    footer part start-->
-
-
-
-
     <!--    footer part end-->
     <section class="complete-footer">
 
@@ -262,20 +270,15 @@
             <div class="row">
                 <!--Foot widget-->
                 <div class="col-xs-12 col-sm-6 col-md-3 foot-widget">
-
-
-
-
                     <address class="foot-address">
                             <div class="col-xs-12 no-pad"><i class="icon-globe address-icons"></i>18/F, Bir Uttam <br/>
                                 Qazi Nuruzzaman Sarak,<br/>West Panthapath,Dhaka 1205
                             </div>
-                            <div class="col-xs-12 no-pad"><i class="icon-phone2 address-icons"></i>10616
+                            <div class="col-xs-12 no-pad">
+                                <i class="icon-phone2 address-icons"></i>10616
                             </div>
-                            
-                                
-                            
-                            <div class="col-xs-12 no-pad"><i class="icon-mail address-icons"></i>loco@gmail.com
+                            <div class="col-xs-12 no-pad">
+                                <i class="icon-mail address-icons"></i>loco@gmail.com
                             </div>
                         </address>
                 </div>
@@ -296,37 +299,18 @@
                         <dt><a href="#">Web e-mail</a></dt>
                         <dt><a href="#">Find a doctor</a></dt>
                         <dt><a href="#">Make an Appointment</a></dt>
-
                     </dl>
-
-
                 </div>
 
                 <!--Foot widget-->
                 <div class="col-xs-12 col-sm-6 col-md-3 foot-widget">
                     <div class="foot-widget-title">ABOUT LOCO</div>
-
-
-
                     <p>
                         <iframe width="100%" height="100" src="https://www.youtube.com/embed/pe4GyGUOMUg" frameborder="0" allowfullscreen></iframe>
                     </p>
-
-
-
-
-
-
-
-
-
-
                 </div>
-
             </div>
         </div>
-
-
 
         <div class="bottom-footer">
             <div class="container">
@@ -335,7 +319,6 @@
                     <!--Foot widget-->
                     <div class="col-xs-12 col-sm-12 col-md-12 foot-widget-bottom">
                         <p class="col-xs-12 col-md-12 no-pad">Copyright © 2018 loco Developed by debashish-raha-sakib-sadman</p>
-
                     </div>
                 </div>
             </div>
@@ -344,5 +327,4 @@
     </section>
     <!---->
 </body>
-
 </html>

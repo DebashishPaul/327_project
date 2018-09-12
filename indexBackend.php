@@ -1,36 +1,25 @@
 <?php
-
+//connection to database
 $connection = mysqli_connect('localhost', 'root', '', 'loco');
-
 
 if(!$connection){
 	echo "Sorry";
 }
-else{
-	echo "Connection Successful";
+
+else {
+	/*$_POST['lastname'].$_POST['middlename'];
+	$_REQUEST['username'];*/
+	if(!empty($_POST)) {
+		$Post_Content = $_POST['message'];
+
+		if(strlen($Post_Content) > 0) {
+			$result= "INSERT INTO post (Post_content) VALUES (".'"'.$Post_Content.'")';
+
+			if ($connection->query($result) === FALSE) {
+				echo "Error: " . $result . "<br>" . $connection->error;
+			}
+			
+			$connection->close();
+		}
+	}		
 }
-
-var_dump($_POST);
-
- /*$_POST['lastname'].$_POST['middlename'];
- $_REQUEST['username'];*/
-
-
-
-$Post_content=$_POST['message'] ;
-
-
-$result= "INSERT INTO `post`(`Post_content`) values ('$Post_content')";
-
-
-
-
-if ($connection->query($result) === TRUE) {
-echo "<br>New record created successfully";
-} else {
-echo "Error: " . $result . "<br>" . $connection->error;
-}$connection->close();
-header("Location:index.php");
-
-
-?>
