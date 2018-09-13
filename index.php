@@ -483,26 +483,14 @@ TypingText.runAll();
             <div class="container">
                 <div class="row">
                     <!--Foot widget-->
-                    <div class="col-xs-12 col-sm-6 col-md-6 foot-widget" style="text-align: center;padding-top:100px;">
-                        <address class="foot-address">
-                            <div class="col-xs-12 no-pad"><i class="icon-globe address-icons"></i>18/F, Bir Uttam <br/>
-                                Qazi Nuruzzaman Sarak,<br/>West Panthapath,Dhaka 1205
-                            </div>
-                            <div class="col-xs-12 no-pad">
-                                <i class="icon-phone2 address-icons"></i>10616
-                            </div>
-                            <div class="col-xs-12 no-pad">
-                                <i class="icon-mail address-icons"></i>loco@gmail.com
-                            </div>
-                        </address>
-                    </div>
+                   
 
                     <!--Foot widget-->
                  
                     <!--Foot widget-->
-                    <div class="col-xs-12 col-sm-6 col-md-6 foot-widget">
+                    <div class="col-xs-12 col-sm-12 col-md-12 foot-widget">
                         <div class="foot-widget-title" style="text-align: center">ABOUT LOCO</div>
-                        <p>
+                        <p style="padding-left: 300px;">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/n39sgqaVsZI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </p>
                     </div>
@@ -515,7 +503,7 @@ TypingText.runAll();
                     <div class="row final">
                        
                         <div class="col-xs-12 col-sm-12 col-md-12 foot-widget-bottom" style="padding-left: 57px;">
-                            <p class="col-xs-12 col-md-12 no-pad">Copyright © 2018 loco Developed by debashish-raha-sakib-sadman</p>
+                            <p class="col-xs-12 col-md-12 no-pad">Copyright © 2018 loco Developed by debashish-raha-sakib-shadman</p>
                         </div>
                     </div>
                 </div>
