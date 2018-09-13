@@ -4,15 +4,26 @@
     table {    
         border: 1px solid black;
         width: 100%;
+        font-family: sans-serif;
+        text-align: center;
+        background-color: #b3b3ff;
     }
 
     td{
         border: 3px solid #dddddd;
-        text-align: left;
+        text-align: center;
         padding: 8px;
-        border-bottom: 1px solid #ddd;    
+        border: 3px solid #73AD21;
+        border-bottom: 1px solid #ddd; 
+        text-shadow: 1px 1px red;   
     }
-
+td:hover{
+    background-color: white;
+    color: #004d00;
+    text-shadow: 1px 1px black;
+    font-size: 20px;
+    cursor: wait;
+}
     th {
         height: 50px;
         border: 10px solid #dddddd;
