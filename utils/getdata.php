@@ -47,7 +47,7 @@
             echo "<br>";
             echo "Post ID  ".$row['Post_id'];
             echo "<br>";
-            echo "Post Content   ".$row['Post_content'];
+            echo "Post Content :  ".$row['Post_content'];
             echo "</p>";
             echo "</td>
             </tr>
